@@ -11,17 +11,22 @@ clock = pg.time.Clock()
 
 objects = []
 
+
+
 running = True
 
 def createObject():
-	x = np.random.randint(0,SCREEN_WIDTH)
-	y = np.random.randint(0,SCREEN_HEIGHT)
-	z = np.random.randint(1, 10)
+	radius = 250
+	xbase = np.random.uniform(-radius, radius)
+	ybase = np.random.uniform(np.sqrt(radius**2 - xbase**2) *  -1, np.sqrt(radius**2 - xbase**2))#np.random.uniform(250, 750)
+	z = np.random.randint(1, 5)
+	x = xbase + 500
+	y = ybase + 500
 
 	object = Object(x,y,z)
 	objects.append(object)
 
-for amount in range(100):
+for amount in range(300):
 	createObject()
 
 def drawObjects(screen):
@@ -37,3 +42,4 @@ while running:
 			pg.quit()
 	screen.fill((0,0,0))
 	drawObjects(screen)
+	pg.display.flip()
