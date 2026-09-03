@@ -4,10 +4,11 @@ import numpy as np
 
 class Object:
 
-	def __init__(self,x,y,z):
+	def __init__(self,x,y,z,pos):
 		self.x = x
 		self.y = y
 		self.z = z
+		self.pos = pos
 
 	def draw(self, screen):
 		radius = self.z

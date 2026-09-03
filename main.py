@@ -18,15 +18,22 @@ running = True
 def createObject():
 	radius = 250
 	xbase = np.random.uniform(-radius, radius)
-	ybase = np.random.uniform(np.sqrt(radius**2 - xbase**2) *  -1, np.sqrt(radius**2 - xbase**2))#np.random.uniform(250, 750)
-	z = np.random.randint(1, 5)
+	ybase = np.random.uniform(np.sqrt(radius**2 - xbase**2) *  -1, np.sqrt(radius**2 - xbase**2))
 	x = xbase + 500
 	y = ybase + 500
+	d = np.sqrt((xbase)**2 + (ybase)**2)
+	rand = np.random.choice([ (- 250 / d) + 1,0])
+	z = 8 -  d / 60 + rand
+	if rand > 0 :
+		pos = 0
+	else:
+		pos = 1
 
-	object = Object(x,y,z)
+
+	object = Object(x,y,z,pos)
 	objects.append(object)
 
-for amount in range(300):
+for amount in range(500):
 	createObject()
 
 def drawObjects(screen):
