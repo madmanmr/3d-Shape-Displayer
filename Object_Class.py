@@ -5,26 +5,52 @@ import numpy as np
 
 
 class Object:
-    def __init__(self,x,y,z):
+    def __init__(self, x, y, z):
         self.x = x
         self.y = y
         self.z = z
-        self.acc = 0
+        self.theta = np.arctan2(z - 500, x - 500)
+        self.phi = np.arccos((y - 500)/ 250)
         self.vx = 0
         self.vy = 0
         self.vz = 0
-        self.d = 1
+        self.radius = 0
 
     def update(self):
-        self.x += self.vx * self.d
-        self.y += self.vy * self.d
+        self.x -= 500
+        self.y -= 500
+        self.z -= 500 #for calcs
 
-        xbase = self.x - 500
-        ybase = self.y - 500
+        horz = self.vx * 0.01
+        vert = self.vy * 0.01
+        diag = self.vz * 0.01
 
-        self.z = 500 + np.sqrt(250 ** 2 - xbase ** 2 - ybase ** 2) * self.d
+        x = self.x
+        z = self.z
+
+        #y axis
+        self.x = x * np.cos(horz) - z * np.sin(horz)
+        self.z = x * np.sin(horz) + z * np.cos(horz)
+
+        y = self.y
+        z = self.z
+
+        #x axis
+        self.y = y * np.cos(vert) - z * np.sin(vert)
+        self.z = y * np.sin(vert) + z * np.cos(vert)
+
+        x = self.x
+        y = self.y
+
+        #z axis
+        self.x = x * np.cos(diag) - y * np.sin(diag)
+        self.y = x * np.sin(diag) + y * np.cos(diag)
+
+        self.x += 500
+        self.y += 500
+        self.z += 500
+        self.radius = max(1,(self.z - 250) / 20) #should probnabaly change cause far back is too small
 
     def draw(self, screen):
-        radius = max(1, (500 - self.z) / 15)
         c = min(255, int(abs(self.z - 500) + 5))
-        pg.draw.circle(screen, (c,c,c), (int(self.x), int(self.y)), int(radius))
+        pg.draw.circle(screen, (c, c, c), (int(self.x), int(self.y)), self.radius)

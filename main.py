@@ -33,36 +33,33 @@ for amount in range(500):
 	createObject()
 
 def drawObjects(screen):
-		for each in objects:
-			each.update()
-			each.draw(screen)
-			if each.z < 250:
-				each.d = -1
-			else:
-				each.d = 1
-			if np.sqrt((each.x - 500) ** 2 + (each.y - 500) ** 2) > 249.9:
-				each.d *= -1
+	for each in objects:
+		each.draw(screen)
 
 def run():
 	screen.fill((0, 0, 0))
 	keys = pg.key.get_pressed()
+
 	for each in objects:
-		if keys[pg.K_UP]:
-			each.vy = -5
-		elif keys[pg.K_DOWN]:
-			each.vy = 5
-		else:
-			each.vy = 0
-		if keys[pg.K_LEFT]:
-			each.vx = -5
-		elif keys[pg.K_RIGHT]:
-			each.vx = 5
-		else:
-			each.vx = 0
+		each.vx = 0
+		each.vy = 0
+
+		if keys[pg.K_w] or keys[pg.K_UP]:
+			each.vy = -1
+		if keys[pg.K_s] or keys[pg.K_DOWN]:
+			each.vy = 1
+		if keys[pg.K_a] or keys[pg.K_LEFT]:
+			each.vx = -1
+		if keys[pg.K_d] or keys[pg.K_RIGHT]:
+			each.vx = 1
+		if keys[pg.K_q]:
+			each.vz = -1
+		if keys[pg.K_e]:
+			each.vz = 1
+
 		each.update()
 
 	drawObjects(screen)
-
 while running:
 	for event in pg.event.get():
 		if event.type == pg.QUIT:
