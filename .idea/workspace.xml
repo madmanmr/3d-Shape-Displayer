@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7685cef-55b3-4d8e-b13b-2a294d529e28" name="Changes" comment="broken">
+    <list default="true" id="e7685cef-55b3-4d8e-b13b-2a294d529e28" name="Changes" comment="works fully">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object_Class.py" beforeDir="false" afterPath="$PROJECT_DIR$/Object_Class.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
@@ -119,7 +119,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789422458108</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="works fully">
+      <option name="closed" value="true" />
+      <created>1789682683565</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1789682683565</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -127,6 +135,7 @@
     <MESSAGE value="circle made" />
     <MESSAGE value="sizes better" />
     <MESSAGE value="broken" />
-    <option name="LAST_COMMIT_MESSAGE" value="broken" />
+    <MESSAGE value="works fully" />
+    <option name="LAST_COMMIT_MESSAGE" value="works fully" />
   </component>
 </project>

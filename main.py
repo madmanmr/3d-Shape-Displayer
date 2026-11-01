@@ -11,11 +11,16 @@ clock = pg.time.Clock()
 
 objects = []
 
+shapeName = {
+	"circle": "Circle",
+	"square": "Square",
+}
+
 
 
 running = True
 
-def createObject():
+def createCircle():
 	radius = 250
 	xbase = np.random.uniform(-radius, radius)
 	ybase = np.random.uniform(np.sqrt(radius**2 - xbase**2) *  -1, np.sqrt(radius**2 - xbase**2))
@@ -24,13 +29,25 @@ def createObject():
 	x = xbase + 500
 	y = ybase + 500
 	z = zbase + 500
-	print(x,y,z)
+	#print(x,y,z)
 
 	object = Object(x,y,z)
 	objects.append(object)
 
-for amount in range(500):
-	createObject()
+def createSquare():
+	halfWidth = 250
+	xbase = np.random.uniform(-halfWidth, halfWidth)
+	ybase = np.random.uniform(-halfWidth, halfWidth)
+	zbase = np.random.choice([-halfWidth, halfWidth])
+	x = xbase + 500
+	y = ybase + 500
+	z = zbase + 500
+
+	object = Object(x, y, z)
+	objects.append(object)
+
+for amount in range(1000):
+	createCircle()
 
 def drawObjects(screen):
 	for each in objects:
@@ -43,6 +60,7 @@ def run():
 	for each in objects:
 		each.vx = 0
 		each.vy = 0
+		each.vz = 0
 
 		if keys[pg.K_w] or keys[pg.K_UP]:
 			each.vy = -1

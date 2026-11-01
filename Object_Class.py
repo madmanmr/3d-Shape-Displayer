@@ -49,8 +49,10 @@ class Object:
         self.x += 500
         self.y += 500
         self.z += 500
-        self.radius = max(1,(self.z - 250) / 20) #should probnabaly change cause far back is too small
+        z = self.z - 500
+        self.radius = max(1,(z / 90) + 10) #should probnabaly change cause far back is too small
 
     def draw(self, screen):
-        c = min(255, int(abs(self.z - 500) + 5))
-        pg.draw.circle(screen, (c, c, c), (int(self.x), int(self.y)), self.radius)
+        z = self.z - 500
+        c = int((z / 5) + 155)
+        pg.draw.circle(screen, (255, 255, 255), (int(self.x), int(self.y)), self.radius)
